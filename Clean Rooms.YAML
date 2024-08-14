@@ -1,0 +1,16 @@
+alias: Clean Rooms
+sequence:
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.deebot_ozmo_920
+      command: spot_area
+      params:
+        rooms: "{{ rooms }}"
+        cleanings: "1"
+fields:
+  rooms:
+    selector:
+      text: null
+    name: rooms
+    required: true
+description: ""
