@@ -1,0 +1,51 @@
+views:
+  - title: Home
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:xiaomi-vacuum-map-card
+            title: Deebot Ozmo 920
+            entity: vacuum.deebot_ozmo_920
+            vacuum_platform: send_command
+            map_source:
+              image: /local/map.png
+            map_modes:
+              - name: Zones
+                icon: mdi:select-drag
+                selection_type: MANUAL_RECTANGLE
+                max_selections: 1
+                repeats_type: INTERNAL
+                max_repeats: 5
+                service_call_schema:
+                  service: script.clean_zones
+                  service_data:
+                    coordinate: '[[selection]]'
+                    repeats: '[[repeats]]'
+            calibration_source:
+              calibration_points:
+                - vacuum:
+                    x: 6250
+                    'y': -100
+                  map:
+                    x: 469
+                    'y': 25
+                - vacuum:
+                    x: 4450
+                    'y': -4800
+                  map:
+                    x: 400
+                    'y': 202
+                - vacuum:
+                    x: -6550
+                    'y': -2350
+                  map:
+                    x: 2
+                    'y': 116
+                - vacuum:
+                    x: -6550
+                    'y': -5800
+                  map:
+                    x: 2
+                    'y': 238
+          - type: picture
+            image_entity: image.deebot_ozmo_920_map
